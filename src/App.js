@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import { addTodo} from './actions/index';
 
 class App extends Component {
-  state={
-    text:this.props.text,
-  };
-
   handleClick(){
     this.props.addTodo("Muhammed Eviz")
   }
@@ -14,10 +10,11 @@ class App extends Component {
   handleClick2(){
     this.props.addTodo("Ahmed Eviz")
   }
+  
   render (){
     return (
       <div>
-        <h1>{this.state.text}</h1>{/*It has to be change when I click the buttons. */}
+        <h1>{this.props.text}</h1>{/*It has to be change when I click the buttons. */}
         <button onClick={this.handleClick.bind(this)}>ME</button>
         <button onClick={this.handleClick2.bind(this)}>AE</button>
       </div>
@@ -30,8 +27,8 @@ const mapStateToProps = state => ({
   text: state.text,
 });
 
-const mapDispatchToProps =(dispatch) =>{
-  return addTodo
+const mapDispatchToProps = {
+  addTodo
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);
