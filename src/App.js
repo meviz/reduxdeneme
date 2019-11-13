@@ -3,22 +3,23 @@ import { connect } from 'react-redux';
 import { addTodo} from './actions/index';
 
 class App extends Component {
+  state={
+    text:this.props.text,
+  };
 
   handleClick(){
     this.props.addTodo("Muhammed Eviz")
-    console.log(this.props);
   }
 
   handleClick2(){
     this.props.addTodo("Ahmed Eviz")
-    console.log(this.props);
   }
   render (){
     return (
       <div>
-        <h1>{this.props.text}</h1>
+        <h1>{this.state.text}</h1>
         <button onClick={this.handleClick.bind(this)}>ME</button>
-        <button onClick={this.handleClick2.bind(this) }>AE</button>
+        <button onClick={this.handleClick2.bind(this)}>AE</button>
       </div>
     )
   }
@@ -29,10 +30,8 @@ const mapStateToProps = state => ({
   text: state.text,
 });
 
+const mapDispatchToProps ={
+  addTodo,
+}
 
- 
-
-
- 
-
-export default connect(mapStateToProps,{addTodo})(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);
