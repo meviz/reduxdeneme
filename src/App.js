@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addTodo} from './actions/index';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  handleClick(){
+    this.props.addTodo("Muhammed Eviz")
+    console.log(this.props);
+  }
+
+  handleClick2(){
+    this.props.addTodo("Ahmed Eviz")
+    console.log(this.props);
+  }
+  render (){
+    return (
+      <div>
+        <h1>{this.props.text}</h1>
+        <button onClick={this.handleClick.bind(this)}>ME</button>
+        <button onClick={this.handleClick2.bind(this) }>AE</button>
+      </div>
+    )
+  }
 }
 
-export default App;
+// AppContainer.js
+const mapStateToProps = state => ({
+  text: state.text,
+});
+
+
+ 
+
+
+ 
+
+export default connect(mapStateToProps,{addTodo})(App);
