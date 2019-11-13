@@ -17,7 +17,7 @@ class App extends Component {
   render (){
     return (
       <div>
-        <h1>{this.state.text}</h1>
+        <h1>{this.state.text}</h1>{/*It has to be change when I click the buttons. */}
         <button onClick={this.handleClick.bind(this)}>ME</button>
         <button onClick={this.handleClick2.bind(this)}>AE</button>
       </div>
@@ -30,8 +30,8 @@ const mapStateToProps = state => ({
   text: state.text,
 });
 
-const mapDispatchToProps ={
-  addTodo,
+const mapDispatchToProps =(dispatch) =>{
+  return addTodo
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);
